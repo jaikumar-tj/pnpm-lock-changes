@@ -47,9 +47,10 @@ const run = async () => {
 
     const baseBranch = ref || default_branch;
     debug('Base branch: ' + baseBranch);
-    console.log('Base branch: ' + baseBranch);
+    debug('----' + inputPath);
+    debug('----' + process.cwd());
     const lockPath = path.resolve(process.cwd(), inputPath);
-    console.log('lockPath' + lockPath);
+    debug('lockpa' + lockPath);
     console.log('inputPath' + inputPath);
     if (!fs.existsSync(lockPath)) {
       throw Error(
