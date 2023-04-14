@@ -47,9 +47,10 @@ const run = async () => {
 
     const baseBranch = ref || default_branch;
     debug('Base branch: ' + baseBranch);
-
+    console.log('Base branch: ' + baseBranch);
     const lockPath = path.resolve(process.cwd(), inputPath);
-
+    console.log('lockPath' + lockPath);
+    console.log('inputPath' + inputPath);
     if (!fs.existsSync(lockPath)) {
       throw Error(
         '💥 The code has not been checkout or the lock file does not exist in this PR, aborting!'
@@ -64,12 +65,13 @@ const run = async () => {
 
     const basePath = getBasePathFromInput(inputPath);
     debug('Base lockfile path: ' + basePath);
-
+    console.log('basePath' + basePath);
     const baseTree = await octokit.request('GET /repos/{owner}/{repo}/git/trees/{branch}:{path}', {
       ...oktokitParams,
       branch: baseBranch,
       path: basePath
     });
+    console.log('baseTree' + baseTree);
 
     if (!baseTree || !baseTree.data || !baseTree.data.tree) {
       throw Error('💥 Cannot fetch repository base branch tree, aborting!');
