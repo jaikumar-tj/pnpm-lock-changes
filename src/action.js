@@ -59,6 +59,8 @@ const run = async () => {
     }
 
     const content = fs.readFileSync(lockPath, { encoding: 'utf8' });
+    debug('parsing...');
+    debug('parsing ' + content);
     const updatedLock = parseLock(content);
 
     const oktokitParams = { owner, repo };
